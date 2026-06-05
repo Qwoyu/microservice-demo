@@ -1,0 +1,35 @@
+server:
+  port: 9999
+
+spring:
+  profiles:
+    active: k8s
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: selection-service
+          uri: lb://selection-service
+          predicates:
+            - Path=/selection/**
+          filters:
+            - StripPrefix=1
+
+        - id: course-service
+          uri: lb://course-service
+          predicates:
+            - Path=/course/**
+          filters:
+            - StripPrefix=1
+
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/user/**
+          filters:
+            - StripPrefix=1

@@ -1,0 +1,9 @@
+eureka:
+  instance:
+    hostname: eureka-service
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: false
+    service-url:
+      defaultZone: http://eureka-service:8888/eureka/

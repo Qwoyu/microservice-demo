@@ -1,0 +1,8 @@
+server:
+  port: 18020
+
+spring:
+  profiles:
+    active: k8s
+  application:
+    name: user-service

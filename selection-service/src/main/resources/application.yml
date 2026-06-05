@@ -1,0 +1,12 @@
+server:
+  port: 18030
+
+spring:
+  profiles:
+    active: k8s
+  application:
+    name: selection-service
+
+feign:
+  hystrix:
+    enabled: true

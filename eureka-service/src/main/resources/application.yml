@@ -1,0 +1,17 @@
+server:
+  port: 8888
+
+spring:
+  profiles:
+    active: k8s
+  application:
+    name: eureka-server
+
+eureka:
+  server:
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 4000
+    wait-time-in-ms-when-sync-empty: 0
+    responseCacheUpdateIntervalMs: 1
+    use-read-only-response-cache: false
+    renewal-percent-threshold: 0.49
