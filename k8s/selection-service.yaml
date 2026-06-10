@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: selection-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: selection-service
+  template:
+    metadata:
+      labels:
+        app: selection-service
+    spec:
+      containers:
+        - name: selection-service
+          image: selection-service:v1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 18030
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: selection-service
+spec:
+  type: ClusterIP
+  selector:
+    app: selection-service
+  ports:
+    - port: 18030
+      targetPort: 18030

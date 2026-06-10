@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: course-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: course-service
+  template:
+    metadata:
+      labels:
+        app: course-service
+    spec:
+      containers:
+        - name: course-service
+          image: course-service:v1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 18010
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: course-service
+spec:
+  type: ClusterIP
+  selector:
+    app: course-service
+  ports:
+    - port: 18010
+      targetPort: 18010
