@@ -14,8 +14,8 @@ spec:
     spec:
       containers:
         - name: gateway-service
-          image: gateway-service:v1.0
-          imagePullPolicy: IfNotPresent
+          image: crpi-pik0sdrslhyp68pn.cn-hangzhou.personal.cr.aliyuncs.com/qwoyu/gateway-service:v1.0
+          imagePullPolicy: Always
           ports:
             - containerPort: 9999
 ---
